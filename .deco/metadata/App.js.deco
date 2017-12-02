@@ -1,0 +1,51 @@
+{
+	"liveValues": [
+		{
+			"range": {
+				"from": {
+					"line": 30,
+					"ch": 22
+				},
+				"to": {
+					"line": 30,
+					"ch": 27
+				}
+			},
+			"type": "boolean",
+			"name": "Horizontal",
+			"group": "SCROLL VIEW"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 49,
+					"ch": 21
+				},
+				"to": {
+					"line": 49,
+					"ch": 40
+				}
+			},
+			"editWith": "colorPicker",
+			"type": "string",
+			"name": "TintColor",
+			"group": "SWITCH"
+		},
+		{
+			"range": {
+				"from": {
+					"line": 50,
+					"ch": 23
+				},
+				"to": {
+					"line": 50,
+					"ch": 42
+				}
+			},
+			"editWith": "colorPicker",
+			"type": "string",
+			"name": "OnTintColor",
+			"group": "SWITCH"
+		}
+	]
+}
