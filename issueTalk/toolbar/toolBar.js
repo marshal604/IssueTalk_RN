@@ -1,7 +1,8 @@
 import React from 'react';
 import {
     View,
-    StyleSheet
+    StyleSheet,
+    Platform
 } from 'react-native';
 import Back from './back'
 import SearchingFiled from './searchingFiled/searchingFiled'
@@ -15,7 +16,7 @@ const ToolBar = () => (
 const style = StyleSheet.create({
     container: {
         height: 50,
-        marginTop: 20,
+        marginTop: Platform.OS === 'ios'? 20: 0,
         borderTopWidth: 3,
         borderTopColor: '#747474',
         borderBottomColor: '#747474',

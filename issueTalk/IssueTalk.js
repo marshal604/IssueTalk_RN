@@ -4,21 +4,21 @@
 
 import React from 'react'
 import {
-    StyleSheet,
-    View
+    View,
+    StyleSheet
 } from 'react-native';
 import ToolBar from './toolbar/toolBar'
+import IssueList from './issueList/IssueList'
 const IssueTalk = () => (
-    <View>
+    <View style={styles.container}>
         <ToolBar />
+        <IssueList />
     </View>
 );
-
-const style = StyleSheet.create({
-    container:{
-        color: 'pink'
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
     }
 });
-
 
 export default IssueTalk
