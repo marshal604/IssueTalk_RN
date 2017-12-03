@@ -1,4 +1,4 @@
-package com.helloworldapp;
+package com.IssueTalk_RN;
 
 import android.app.Application;
 
