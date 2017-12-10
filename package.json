@@ -7,7 +7,10 @@
 		"test": "jest"
 	},
 	"dependencies": {
-		"react": "16.0.0",
+		"EventEmitter": "^1.0.0",
+		"events": "^1.1.1",
+		"firebase": "^4.7.0",
+		"react": "^16.2.0",
 		"react-native": "0.50.4"
 	},
 	"devDependencies": {

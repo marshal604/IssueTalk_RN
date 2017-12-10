@@ -14,7 +14,7 @@ class IssueListItem extends React.PureComponent {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.text}>{this.state.key}</Text>
+                <Text style={styles.text}>{this.state.name}</Text>
             </View>
         );
     }
