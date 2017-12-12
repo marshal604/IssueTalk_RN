@@ -7,13 +7,14 @@ import {
 } from 'react-native';
 import IssueListItem from './IssueListItem';
 import issueTalkStore from '../issueTalkStore/IssueTalkStore';
+import dispatcher from '../Dispatcher';
+import * as myAction from '../issueTalkAction/IssueTalkAction';
 class IssueList extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
             data : issueTalkStore.getData()
         };
-        // this.createData();
     }
 
     componentWillMount() {
@@ -23,6 +24,10 @@ class IssueList extends React.PureComponent {
            })
         });
     }
+
+    fetchData = (number) => {
+        myAction.fetchData();
+    };
 
     render() {
         if(this.state.data.length > 0) {
@@ -35,7 +40,8 @@ class IssueList extends React.PureComponent {
         }else {
             return (
                 <View style={styles.container}>
-                    <Button style={styles.btn} onPress={issueTalkStore.useFetch} title={'Get Data!'} />
+                    <Button style={styles.btn} onPress={this.fetchData.bind(this, 100)} title={'Get Data!'} />
+                    {/*<Button style={styles.btn} onPress={issueTalkStore.createData.bind} title={'Get Data!'} />*/}
                 </View>
             );
         }
