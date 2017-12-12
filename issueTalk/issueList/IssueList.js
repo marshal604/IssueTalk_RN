@@ -29,6 +29,10 @@ class IssueList extends React.PureComponent {
         myAction.fetchData();
     };
 
+    sayHi = (name) => {
+        myAction.sayHi(name);
+    };
+
     render() {
         if(this.state.data.length > 0) {
             return (
@@ -41,7 +45,7 @@ class IssueList extends React.PureComponent {
             return (
                 <View style={styles.container}>
                     <Button style={styles.btn} onPress={this.fetchData.bind(this, 100)} title={'Get Data!'} />
-                    {/*<Button style={styles.btn} onPress={issueTalkStore.createData.bind} title={'Get Data!'} />*/}
+                    <Button style={styles.btn} onPress={this.sayHi.bind(this, "yur")} title={'Say Hi'} />
                 </View>
             );
         }

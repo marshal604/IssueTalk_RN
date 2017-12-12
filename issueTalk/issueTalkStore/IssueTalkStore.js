@@ -2,11 +2,13 @@ import {EventEmitter} from 'events';
 import * as myFirebase from '../../firebase/myFirebase';
 import dispatcher from '../Dispatcher';
 import * as myAction from '../issueTalkAction/IssueTalkAction';
+import { NativeModules } from 'react-native';
 
 class IssueTalkStore extends EventEmitter {
     constructor() {
         super();
         this.data = [];
+        this.helloPlugin = NativeModules.TestBridge;
     }
 
     getData = () => this.data;
@@ -46,6 +48,10 @@ class IssueTalkStore extends EventEmitter {
         });
     };
 
+    sayHi = (name) => {
+        this.helloPlugin.sayHi(name);
+    };
+
     handlerAction = (type) => {
         switch(type.type) {
             case myAction.CREATE_DATA:
@@ -53,6 +59,9 @@ class IssueTalkStore extends EventEmitter {
                 break;
             case myAction.FETCH_DATA:
                 this.fetchData();
+                break;
+            case myAction.SAY_HI:
+                this.sayHi(type.text);
                 break;
         }
     }
