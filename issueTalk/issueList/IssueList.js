@@ -3,11 +3,11 @@ import {
     View,
     Button,
     FlatList,
-    StyleSheet
+    StyleSheet,
+    Platform
 } from 'react-native';
 import IssueListItem from './IssueListItem';
 import issueTalkStore from '../issueTalkStore/IssueTalkStore';
-import dispatcher from '../Dispatcher';
 import * as myAction from '../issueTalkAction/IssueTalkAction';
 class IssueList extends React.PureComponent {
     constructor(props) {
@@ -33,6 +33,23 @@ class IssueList extends React.PureComponent {
         myAction.sayHi(name);
     };
 
+    sayHiAndCallback = (name) => {
+        var fn = {};
+        if (Platform.OS === 'ios') {
+            fn.callback = (success, error) => {
+                if(error) {
+                    alert(error)
+                } else {
+                    alert(success)
+                }
+            };
+        } else {
+          fn.success = success => alert(success);
+          fn.error =  error => alert(error);
+        }
+        myAction.sayHiAndCallback(name, fn);
+    };
+
     render() {
         if(this.state.data.length > 0) {
             return (
@@ -46,6 +63,7 @@ class IssueList extends React.PureComponent {
                 <View style={styles.container}>
                     <Button style={styles.btn} onPress={this.fetchData.bind(this, 100)} title={'Get Data!'} />
                     <Button style={styles.btn} onPress={this.sayHi.bind(this, "yur")} title={'Say Hi'} />
+                    <Button style={styles.btn} onPress={this.sayHiAndCallback.bind(this, "YUR")} title={'Say Hi And Callback'} />
                 </View>
             );
         }

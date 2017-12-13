@@ -26,5 +26,15 @@ RCT_EXPORT_METHOD(sayHi:(NSString *)name)
   NSLog(@"hello: %@", name);
 }
 
+/*
+ 創建一個方法給js呼叫並Callback
+ 
+ */
+RCT_EXPORT_METHOD(sayHiAndCallback:(NSString *) name callback:(RCTResponseSenderBlock)callback)
+{
+  NSLog(@"hello: %@", name);
+  callback(@[@"i'm success callback", @"i'm error callback"]);
+}
+
 
 @end

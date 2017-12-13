@@ -2,7 +2,10 @@ import {EventEmitter} from 'events';
 import * as myFirebase from '../../firebase/myFirebase';
 import dispatcher from '../Dispatcher';
 import * as myAction from '../issueTalkAction/IssueTalkAction';
-import { NativeModules } from 'react-native';
+import {
+    NativeModules,
+    Platform
+} from 'react-native';
 
 class IssueTalkStore extends EventEmitter {
     constructor() {
@@ -52,6 +55,14 @@ class IssueTalkStore extends EventEmitter {
         this.helloPlugin.sayHi(name);
     };
 
+    sayHiAndCallback = (name, fn) => {
+        if (Platform.OS === 'ios') {
+            this.helloPlugin.sayHiAndCallback(name, fn.callback);
+        } else {
+            this.helloPlugin.sayHiAndCallback(name, fn.success, fn.error);
+        }
+    };
+
     handlerAction = (type) => {
         switch(type.type) {
             case myAction.CREATE_DATA:
@@ -62,6 +73,9 @@ class IssueTalkStore extends EventEmitter {
                 break;
             case myAction.SAY_HI:
                 this.sayHi(type.text);
+                break;
+            case myAction.SAY_HI_AND_CALLBACK:
+                this.sayHiAndCallback(type.text, type.fn);
                 break;
         }
     }
