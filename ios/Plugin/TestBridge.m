@@ -32,11 +32,26 @@ RCT_EXPORT_METHOD(sayHi:(NSString *)name)
  */
 RCT_EXPORT_METHOD(sayHiAndCallback:(NSString *) name success:(RCTResponseSenderBlock)successCallback error:(RCTResponseSenderBlock) errorCallback)
 {
-  NSLog(@"hello: %@", name);
+  NSLog(@"sayHiAndCallback: %@", name);
   if ([name isEqualToString:@"YUR"]) {
     successCallback(@[@"i'm success callback"]);
   }else {
     errorCallback(@[@"i'm error callback"]);
+  }
+}
+
+/*
+ 創建一個方法給js呼叫並利用Promise來呼叫Callback
+ 
+ */
+RCT_REMAP_METHOD(sayHiAndPromise, name:(NSString *) name resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock) reject)
+{
+  NSLog(@"sayHiAndPromise: %@", name);
+  if ([name isEqualToString:@"YUR"]) {
+    resolve(@[@"i'm success promise"]);
+  }else {
+    NSError *error = nil;
+    reject(@"this", @"is", error);
   }
 }
 

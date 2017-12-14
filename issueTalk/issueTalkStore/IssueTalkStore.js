@@ -59,6 +59,16 @@ class IssueTalkStore extends EventEmitter {
         this.helloPlugin.sayHiAndCallback(name, fn.success, fn.error);
     };
 
+    sayHiAndPromise = async (name, fn) => {
+        try{
+            const event = await this.helloPlugin.sayHiAndPromise(name);
+            fn.success.call(this, event);
+        }catch (e) {
+            console.error(e);
+        }
+
+    };
+
     handlerAction = (type) => {
         switch(type.type) {
             case myAction.CREATE_DATA:
@@ -72,6 +82,9 @@ class IssueTalkStore extends EventEmitter {
                 break;
             case myAction.SAY_HI_AND_CALLBACK:
                 this.sayHiAndCallback(type.text, type.fn);
+                break;
+            case myAction.SAY_HI_AND_PROMISE:
+                this.sayHiAndPromise(type.text, type.fn);
                 break;
         }
     }

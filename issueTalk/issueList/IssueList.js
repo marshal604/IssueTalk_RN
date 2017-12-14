@@ -34,10 +34,17 @@ class IssueList extends React.PureComponent {
     };
 
     sayHiAndCallback = (name) => {
-        var fn = {};
+        let fn = {};
         fn.success = success => alert(success);
         fn.error =  error => alert(error);
         myAction.sayHiAndCallback(name, fn);
+    };
+
+    sayHiAndPromise = (name) => {
+        let fn = {};
+        fn.success = success => alert(success);
+        fn.error =  error => alert(error);
+        myAction.sayHiAndPromise(name, fn);
     };
 
     render() {
@@ -54,6 +61,7 @@ class IssueList extends React.PureComponent {
                     <Button style={styles.btn} onPress={this.fetchData.bind(this, 100)} title={'Get Data!'} />
                     <Button style={styles.btn} onPress={this.sayHi.bind(this, "yur")} title={'Say Hi'} />
                     <Button style={styles.btn} onPress={this.sayHiAndCallback.bind(this, "YUR")} title={'Say Hi And Callback'} />
+                    <Button style={styles.btn} onPress={this.sayHiAndPromise.bind(this, "YUR")} title={'Say Hi And Promise'} />
                 </View>
             );
         }
