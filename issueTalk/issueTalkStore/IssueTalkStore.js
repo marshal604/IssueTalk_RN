@@ -56,11 +56,7 @@ class IssueTalkStore extends EventEmitter {
     };
 
     sayHiAndCallback = (name, fn) => {
-        if (Platform.OS === 'ios') {
-            this.helloPlugin.sayHiAndCallback(name, fn.callback);
-        } else {
-            this.helloPlugin.sayHiAndCallback(name, fn.success, fn.error);
-        }
+        this.helloPlugin.sayHiAndCallback(name, fn.success, fn.error);
     };
 
     handlerAction = (type) => {

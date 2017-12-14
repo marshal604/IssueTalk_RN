@@ -30,10 +30,14 @@ RCT_EXPORT_METHOD(sayHi:(NSString *)name)
  創建一個方法給js呼叫並Callback
  
  */
-RCT_EXPORT_METHOD(sayHiAndCallback:(NSString *) name callback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(sayHiAndCallback:(NSString *) name success:(RCTResponseSenderBlock)successCallback error:(RCTResponseSenderBlock) errorCallback)
 {
   NSLog(@"hello: %@", name);
-  callback(@[@"i'm success callback", @"i'm error callback"]);
+  if ([name isEqualToString:@"YUR"]) {
+    successCallback(@[@"i'm success callback"]);
+  }else {
+    errorCallback(@[@"i'm error callback"]);
+  }
 }
 
 

@@ -31,7 +31,8 @@ public class TestBridge extends ReactContextBaseJavaModule{
         Toast.makeText(getReactApplicationContext(), name, Toast.LENGTH_SHORT).show();
         if (true){
             success.invoke("I'm success callback");
+        }else {
+            error.invoke("I'm error callback");
         }
-        error.invoke("I'm error callback");
     }
 }

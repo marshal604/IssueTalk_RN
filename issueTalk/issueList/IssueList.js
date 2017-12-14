@@ -35,18 +35,8 @@ class IssueList extends React.PureComponent {
 
     sayHiAndCallback = (name) => {
         var fn = {};
-        if (Platform.OS === 'ios') {
-            fn.callback = (success, error) => {
-                if(error) {
-                    alert(error)
-                } else {
-                    alert(success)
-                }
-            };
-        } else {
-          fn.success = success => alert(success);
-          fn.error =  error => alert(error);
-        }
+        fn.success = success => alert(success);
+        fn.error =  error => alert(error);
         myAction.sayHiAndCallback(name, fn);
     };
 
@@ -77,6 +67,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     btn: {
+        // margin: 50
     }
 });
 
